@@ -15,10 +15,12 @@ namespace StockMarket
             string acc = @"C:\Users\DELL\Desktop\StockMarket\StockMarket\account.json";
             //DeserializeO Json file
             StockUtility stockUtility = JsonConvert.DeserializeObject<StockUtility>(File.ReadAllText(file));
+
             Console.WriteLine("-------------------------------------------------------------------------------------");
             Console.WriteLine("                            STOCK MANAGEMENT METHODS                                 ");
             Console.WriteLine("-------------------------------------------------------------------------------------");
             Console.WriteLine("Enter which operation to perform on Stock Inventory\n 1-Add a stock\n 2-Remove a stock\n 3-Display Stocks");
+
             AccountUtility accountUtility = JsonConvert.DeserializeObject<AccountUtility>(File.ReadAllText(acc));
             int num = Convert.ToInt32(Console.ReadLine());
             var fs = stockUtility.stocksList;
