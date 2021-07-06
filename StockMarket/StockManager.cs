@@ -16,7 +16,7 @@ namespace StockMarket
         int totalshare;
         LinkedList<string> timeOfTransaction = new LinkedList<string>();
         //Display Stock Details
-        public void DisplayStocks(List<StockUtility.Stocks> stocksList)
+        public void DisplayStocks(LinkedList<StockUtility.Stocks> stocksList)
         {
             Console.WriteLine("***********DISPLAYING STOCK DETAILS***************");
             foreach (var i in stocksList)
@@ -30,7 +30,7 @@ namespace StockMarket
 
         }
         //Add a stock
-        public void AddStock(List<StockUtility.Stocks> stocks)
+        public void AddStock(LinkedList<StockUtility.Stocks> stocks)
         {
             Stocks stocks1 = new Stocks();
             Console.WriteLine("Enter the stock name: ");
@@ -39,17 +39,26 @@ namespace StockMarket
             stocks1.shares = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the stock price: ");
             stocks1.Price = Convert.ToInt32(Console.ReadLine());
-            stocks.Add(stocks1);
+            stocks.AddLast(stocks1);
         }
-        //Delete a stock
-        public void DeleteInventory(List<StockUtility.Stocks> stocks)
+        //Delete a stock using linked list
+        public void DeleteInventory(LinkedList<StockUtility.Stocks> stocks)
         {
             Console.WriteLine("Enter the stock name to be deleted: ");
-            string temp = Console.ReadLine();
-            stocks.Remove(stocks.Find(result => result.StockName.Equals(temp)));
+            var temp = Console.ReadLine();
+            var node = stocks.First;
+            while (node != null)
+            {
+                var nextNode = node.Next;
+                if (node.Value.StockName == temp)
+                {
+                    stocks.Remove(node);
+                }
+                node = nextNode;
+            }
         }
-        //Display account details
-        public void DisplayAccount(List<AccountUtility.Account> AccountList)
+
+            public void DisplayAccount(List<AccountUtility.Account> AccountList)
         {
             Console.WriteLine("***********DISPLAYING ACCOUNT DETAILS***************");
             foreach (var i in AccountList)

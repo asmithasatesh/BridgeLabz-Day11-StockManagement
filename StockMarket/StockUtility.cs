@@ -6,7 +6,7 @@ namespace StockMarket
 {
     class StockUtility
     {
-        public List<Stocks> stocksList { get; set; }
+        public LinkedList<Stocks> stocksList = new LinkedList<Stocks>();
 
         public class Stocks
         {
